@@ -43,10 +43,10 @@ To achieve this, we:
 This project was brought to life by:
 
 * **Hud Tariq**
-* **Uns Ahmad** - [@radiushere](https://github.com/radiushere)
+* **Uns Ahmad** - [@Deathviperx-nya](https://github.com/Deathviperx-nya)
 * **Musa Mehar** - [@Musamehar](https://github.com/Musamehar)
-* **Aqib Hussain** - [@Deathviperx-nya](https://github.com/Deathviperx-nya)
-
+* **Aqib Hussain** - [@radiushere](https://github.com/radiushere)
+  
 ---
 
 <div align="center">
