@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Renaissance - Art Study Assistant</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "parchment": {
+              50: '#fefefe',
+              100: '#fdfafc',
+              200: '#fefefe',
+              300: '#eebbcf',
+            },
+            "purple": {
+              500: '#8776aa',
+              600: '#6a5c8a',
+              700: '#5d4b77',
+              800: '#2d2434',
+              900: '#2d2434',
+            },
+            "accent": "#eebbcf",
+            "accent-secondary": "#c3aed5",
+          },
+          fontFamily: {
+            "serif-display": ["Cormorant Garamond", "serif"],
+            "serif-body": ["Source Serif 4", "serif"],
+            "sans": ["Inter", "sans-serif"],
+          },
+          boxShadow: {
+            "soft": "0 4px 20px -2px rgba(44, 44, 44, 0.05)",
+          }
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-balance { text-wrap: balance; }
+    }
+  </style>
+</head>
+
+<body
+  class="bg-parchment-50 text-purple-800 font-sans antialiased h-screen flex overflow-hidden selection:bg-accent-secondary selection:text-purple-900">
+
+  <!-- SIDEBAR - COMPLETELY UNTOUCHED -->
+  <nav id="sidebar"
+    class="w-16 md:w-20 bg-purple-900 flex flex-col transition-all duration-300 ease-in-out z-50 shadow-xl shrink-0 h-full relative">
+    <div class="flex items-center gap-3 py-6 px-0 justify-center transition-all duration-300 shrink-0 w-full"
+      id="sidebarHeader">
+      <button id="sidebarToggle"
+        class="size-10 flex items-center justify-center text-accent hover:text-white transition-colors cursor-pointer shrink-0">
+        <span class="material-symbols-outlined text-[32px]">menu</span>
+      </button>
+      <span
+        class="sidebar-label text-white font-serif-display text-xl font-bold whitespace-nowrap opacity-0 transition-opacity duration-300 w-0 overflow-hidden">Renaissance</span>
+    </div>
+
+    <div class="flex flex-col gap-2 w-full px-2 mt-2">
+      <a href="index.html"
+        class="flex items-center gap-4 px-3 py-3 rounded-xl bg-purple-600 text-white shadow-lg shadow-purple-900/50 transition-all overflow-hidden whitespace-nowrap justify-center relative"
+        id="nav-dashboard" title="Dashboard">
+        <span class="material-symbols-outlined shrink-0 text-[24px]">dashboard</span>
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-accent rounded-r-full"></div>
+        <span
+          class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Dashboard</span>
+      </a>
+
+      <a href="studio.html"
+        class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+        id="nav-studio" title="Studio">
+        <span class="material-symbols-outlined shrink-0 text-[24px]">edit_square</span>
+        <span
+          class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Studio</span>
+      </a>
+
+      <a href="capture.html"
+        class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+        id="nav-capture" title="Capture">
+        <span class="material-symbols-outlined shrink-0 text-[24px]">photo_library</span>
+        <span
+          class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Capture</span>
+      </a>
+      <a href="gallery.html"
+        class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+        id="nav-gallery" title="Gallery">
+        <span class="material-symbols-outlined shrink-0 text-[24px]">collections_bookmark</span>
+        <span
+          class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Gallery</span>
+      </a>
+      <a href="export.html"
+        class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+        id="nav-export" title="Export">
+        <span class="material-symbols-outlined shrink-0 text-[24px]">ios_share</span>
+        <span
+          class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Export</span>
+      </a>
+
+      <a href="intro.html"
+        class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+        id="nav-intro" title="Lessons">
+        <span class="material-symbols-outlined shrink-0 text-[24px]">school</span>
+        <span
+          class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Lessons</span>
+      </a>
+    </div>
+
+    <div class="mt-auto flex flex-col gap-4 w-full px-2 mb-6">
+      <a href="controls.html"
+        class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+        id="nav-controls" title="Settings">
+        <span class="material-symbols-outlined shrink-0 text-[24px]">settings</span>
+        <span
+          class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Settings</span>
+      </a>
+
+      <a href="account.html"
+        class="flex items-center gap-3 px-1 py-1 overflow-hidden whitespace-nowrap justify-center border-t border-purple-800 pt-4"
+        id="user-profile" title="User Profile">
+        <div
+          class="w-10 h-10 rounded-full bg-accent/20 border-2 border-purple-400 flex items-center justify-center text-white text-xs font-bold shrink-0">
+          US
+        </div>
+        <div class="flex flex-col sidebar-label opacity-0 transition-opacity duration-300 w-0">
+          <span class="font-sans text-sm font-medium text-white">User Profile</span>
+          <span class="font-sans text-xs text-purple-300">Free Plan</span>
+        </div>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebarHeader = document.getElementById('sidebarHeader');
+    const sidebarLabels = document.querySelectorAll('.sidebar-label');
+    const navItems = document.querySelectorAll('#sidebar a, #user-profile');
+    let isExpanded = false;
+
+    sidebarToggle.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      if (isExpanded) {
+        sidebar.classList.remove('w-16', 'md:w-20');
+        sidebar.classList.add('w-64');
+        sidebarHeader.classList.remove('justify-center');
+        sidebarHeader.classList.add('justify-start', 'px-6');
+
+        navItems.forEach(item => {
+          item.classList.remove('justify-center');
+          item.classList.add('justify-start');
+        });
+
+        sidebarLabels.forEach(label => {
+          label.classList.remove('opacity-0', 'w-0');
+          label.classList.add('opacity-100', 'w-auto', 'ml-3');
+        });
+      } else {
+        sidebar.classList.add('w-16', 'md:w-20');
+        sidebar.classList.remove('w-64');
+        sidebarHeader.classList.add('justify-center');
+        sidebarHeader.classList.remove('justify-start', 'px-6');
+
+        navItems.forEach(item => {
+          item.classList.add('justify-center');
+          item.classList.remove('justify-start');
+        });
+
+        sidebarLabels.forEach(label => {
+          label.classList.add('opacity-0', 'w-0');
+          label.classList.remove('opacity-100', 'w-auto', 'ml-3');
+        });
+      }
+    });
+  </script>
+  <!-- END SIDEBAR -->
+
+  <!-- MAIN CONTENT - REDESIGNED -->
+  <div class="flex-1 flex flex-col min-w-0 bg-parchment-50 relative overflow-hidden">
+
+    <!-- Ambient Background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div
+        class="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-accent-secondary/20 via-accent/10 to-transparent blur-3xl animate-drift">
+      </div>
+      <div
+        class="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-purple-500/10 via-accent-secondary/15 to-transparent blur-3xl animate-drift-reverse">
+      </div>
+      <div class="absolute top-1/3 left-1/2 w-[400px] h-[400px] rounded-full bg-accent/5 blur-3xl animate-pulse-slow">
+      </div>
+    </div>
+
+    <!-- Floating Art Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <svg class="absolute top-20 left-[15%] w-32 h-32 text-purple-500/10 animate-float" viewBox="0 0 100 100"
+        fill="none">
+        <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="0.5" />
+        <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="0.5" />
+        <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="0.5" />
+        <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" stroke-width="0.5" />
+      </svg>
+      <svg class="absolute bottom-32 right-[10%] w-24 h-24 text-accent-secondary/20 animate-float-delayed"
+        viewBox="0 0 100 100" fill="none">
+        <rect x="10" y="10" width="80" height="80" stroke="currentColor" stroke-width="0.5" />
+        <rect x="25" y="25" width="50" height="50" stroke="currentColor" stroke-width="0.5" />
+        <line x1="10" y1="10" x2="90" y2="90" stroke="currentColor" stroke-width="0.5" />
+      </svg>
+      <svg class="absolute top-1/2 right-[25%] w-16 h-16 text-purple-600/15 animate-spin-slow" viewBox="0 0 100 100"
+        fill="none">
+        <polygon points="50,5 95,75 5,75" stroke="currentColor" stroke-width="0.5" fill="none" />
+      </svg>
+    </div>
+
+    <main class="flex-1 overflow-y-auto relative z-10">
+      <div class="min-h-full flex flex-col">
+
+        <!-- Hero Section -->
+        <div class="flex-1 flex items-center justify-center px-6 md:px-12 lg:px-20 py-12">
+          <div class="w-full max-w-7xl">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+              <!-- Left Content -->
+              <div class="lg:col-span-6 xl:col-span-5 space-y-8 animate-fade-in">
+
+                <!-- Badge -->
+                <div
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-purple-100 shadow-soft">
+                  <span class="flex h-2 w-2 relative">
+                    <span
+                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
+                  </span>
+                  <span class="font-sans text-xs font-semibold text-purple-600 tracking-wide uppercase">AI-Powered Study
+                    Tool</span>
+                </div>
+
+                <!-- Main Headline -->
+                <div class="space-y-4">
+                  <h1
+                    class="font-serif-display text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-light tracking-tight text-purple-900 leading-[0.9]">
+                    Master the
+                    <span class="block mt-2 relative">
+                      <span class="relative z-10 italic font-normal text-purple-600">Art of Seeing</span>
+                      <svg class="absolute -bottom-2 left-0 w-full h-4 text-accent/60" viewBox="0 0 200 12"
+                        preserveAspectRatio="none">
+                        <path d="M0,8 Q50,0 100,8 T200,8" stroke="currentColor" stroke-width="3" fill="none"
+                          class="animate-draw" />
+                      </svg>
+                    </span>
+                  </h1>
+                </div>
+
+                <!-- Description -->
+                <p class="font-serif-body text-lg md:text-xl text-purple-500/90 leading-relaxed max-w-lg">
+                  Transform any image into a structured study. Our AI deconstructs artwork into fundamental shapes,
+                  guiding you through the classical approach to drawing mastery.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                  <a href="studio.html"
+                    class="group relative inline-flex items-center justify-center gap-3 h-14 px-8 bg-purple-900 text-white rounded-xl font-sans font-medium overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-purple-900/20 hover:-translate-y-0.5">
+                    <span
+                      class="absolute inset-0 bg-gradient-to-r from-purple-800 to-purple-900 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    <span class="relative flex items-center gap-3">
+                      <span class="material-symbols-outlined text-xl">brush</span>
+                      Begin Your Study
+                      <span
+                        class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    </span>
+                  </a>
+                  <button data-action="unimplemented" data-message="Video demo coming soon!"
+                    class="group inline-flex items-center justify-center gap-3 h-14 px-6 bg-white/80 backdrop-blur-sm border border-purple-100 text-purple-800 rounded-xl font-sans font-medium transition-all duration-300 hover:bg-white hover:border-purple-200 hover:shadow-lg">
+                    <span
+                      class="w-10 h-10 rounded-full bg-accent/30 flex items-center justify-center group-hover:bg-accent/50 transition-colors">
+                      <span class="material-symbols-outlined text-purple-700">play_arrow</span>
+                    </span>
+                    <span>Watch Demo</span>
+                  </button>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="flex items-center gap-8 pt-8 border-t border-purple-900/10">
+                  <div class="group cursor-default">
+                    <p
+                      class="font-serif-display text-4xl font-semibold text-purple-900 group-hover:text-purple-600 transition-colors">
+                      10k<span class="text-accent">+</span></p>
+                    <p class="font-sans text-xs text-purple-500 uppercase tracking-widest mt-1">Studies Created</p>
+                  </div>
+                  <div class="w-px h-12 bg-purple-200"></div>
+                  <div class="group cursor-default">
+                    <p
+                      class="font-serif-display text-4xl font-semibold text-purple-900 group-hover:text-purple-600 transition-colors">
+                      AI</p>
+                    <p class="font-sans text-xs text-purple-500 uppercase tracking-widest mt-1">Analysis Engine</p>
+                  </div>
+                  <div class="w-px h-12 bg-purple-200"></div>
+                  <div class="group cursor-default">
+                    <p
+                      class="font-serif-display text-4xl font-semibold text-purple-900 group-hover:text-purple-600 transition-colors">
+                      ∞</p>
+                    <p class="font-sans text-xs text-purple-500 uppercase tracking-widest mt-1">Possibilities</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Visual -->
+              <div class="lg:col-span-6 xl:col-span-7 relative">
+                <div class="relative aspect-square max-w-xl mx-auto lg:max-w-none">
+
+                  <!-- Orbital Rings -->
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="absolute w-full h-full rounded-full border border-purple-200/50 animate-spin-very-slow">
+                    </div>
+                    <div
+                      class="absolute w-[90%] h-[90%] rounded-full border border-dashed border-accent-secondary/40 animate-spin-reverse">
+                    </div>
+                    <div class="absolute w-[80%] h-[80%] rounded-full border border-purple-300/30 animate-spin-slow">
+                    </div>
+                  </div>
+
+                  <!-- Central Image Container -->
+                  <div
+                    class="absolute inset-[12%] rounded-3xl overflow-hidden shadow-2xl shadow-purple-900/20 border-4 border-white bg-gradient-to-br from-parchment-100 to-white group">
+                    <img
+                      src="/cover page.jpg"
+                      class="absolute inset-0 w-full h-full object-cover">
+
+                    <!-- Sketch Grid Overlay -->
+                    <div class="absolute inset-0 opacity-40">
+                      <div class="absolute inset-0"
+                        style="background-image: linear-gradient(to right, rgba(106,92,138,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(106,92,138,0.1) 1px, transparent 1px); background-size: 40px 40px;">
+                      </div>
+                      <div class="absolute top-1/2 left-0 right-0 h-px bg-purple-400/30"></div>
+                      <div class="absolute top-0 bottom-0 left-1/2 w-px bg-purple-400/30"></div>
+                      <div class="absolute top-0 left-0 right-0 bottom-0"
+                        style="background: linear-gradient(45deg, transparent 48%, rgba(106,92,138,0.15) 49%, rgba(106,92,138,0.15) 51%, transparent 52%);">
+                      </div>
+                    </div>
+
+                    <!-- Central Icon Removed -->
+
+                    <!-- Scanning Line -->
+                    <div
+                      class="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60 animate-scan">
+                    </div>
+                  </div>
+
+                  <!-- Floating Cards -->
+                  <div class="absolute top-[5%] right-[5%] animate-float">
+                    <div
+                      class="bg-white/95 backdrop-blur-md px-5 py-3 rounded-2xl border border-purple-100 shadow-xl flex items-center gap-3 hover:scale-105 transition-transform cursor-default">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-secondary to-accent flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-xl">auto_fix_high</span>
+                      </div>
+                      <div>
+                        <p class="font-sans text-sm font-semibold text-purple-900">Smart Detection</p>
+                        <p class="font-sans text-xs text-purple-500">AI-powered analysis</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="absolute bottom-[8%] left-[0%] animate-float-delayed">
+                    <div
+                      class="bg-white/95 backdrop-blur-md px-5 py-3 rounded-2xl border border-purple-100 shadow-xl flex items-center gap-3 hover:scale-105 transition-transform cursor-default">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-xl">layers</span>
+                      </div>
+                      <div>
+                        <p class="font-sans text-sm font-semibold text-purple-900">Step-by-Step</p>
+                        <p class="font-sans text-xs text-purple-500">Progressive learning</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="absolute top-[45%] left-[-5%] animate-float-slow">
+                    <div
+                      class="bg-white/95 backdrop-blur-md p-3 rounded-xl border border-purple-100 shadow-lg hover:scale-105 transition-transform cursor-default">
+                      <div class="flex items-center gap-2">
+                        <div class="flex -space-x-2">
+                          <div class="w-6 h-6 rounded-full bg-accent border-2 border-white"></div>
+                          <div class="w-6 h-6 rounded-full bg-accent-secondary border-2 border-white"></div>
+                          <div class="w-6 h-6 rounded-full bg-purple-500 border-2 border-white"></div>
+                        </div>
+                        <span class="font-sans text-xs font-medium text-purple-600">+2.4k artists</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Corner Accent -->
+                  <div class="absolute bottom-[5%] right-[8%]">
+                    <div
+                      class="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-accent-secondary/50 blur-xl opacity-60">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Pills -->
+        <div class="px-6 md:px-12 lg:px-20 pb-12">
+          <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap items-center justify-center gap-3">
+              <div role="button" data-action="unimplemented" data-message="Feature: Gesture Studies coming soon!"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-purple-100 text-purple-700 font-sans text-sm hover:bg-white hover:shadow-md transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-lg text-accent">gesture</span>
+                Gesture Studies
+              </div>
+              <div role="button" data-action="unimplemented" data-message="Feature: Shape Breakdown coming soon!"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-purple-100 text-purple-700 font-sans text-sm hover:bg-white hover:shadow-md transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-lg text-purple-500">shapes</span>
+                Shape Breakdown
+              </div>
+              <div role="button" data-action="unimplemented" data-message="Feature: Construction Lines coming soon!"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-purple-100 text-purple-700 font-sans text-sm hover:bg-white hover:shadow-md transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-lg text-accent-secondary">timeline</span>
+                Construction Lines
+              </div>
+              <div role="button" data-action="unimplemented" data-message="Feature: Value Studies coming soon!"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-purple-100 text-purple-700 font-sans text-sm hover:bg-white hover:shadow-md transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-lg text-purple-600">tonality</span>
+                Value Studies
+              </div>
+              <div role="button" data-action="unimplemented" data-message="Feature: Classical Methods coming soon!"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-purple-100 text-purple-700 font-sans text-sm hover:bg-white hover:shadow-md transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-lg text-accent">history_edu</span>
+                Classical Methods
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fade-in 0.8s ease-out forwards;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(1deg);
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+      animation: float 6s ease-in-out infinite 2s;
+    }
+
+    .animate-float-slow {
+      animation: float 8s ease-in-out infinite 1s;
+    }
+
+    @keyframes drift {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(30px, -20px) scale(1.05);
+      }
+    }
+
+    .animate-drift {
+      animation: drift 20s ease-in-out infinite;
+    }
+
+    .animate-drift-reverse {
+      animation: drift 25s ease-in-out infinite reverse;
+    }
+
+    @keyframes pulse-slow {
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 0.6;
+      }
+    }
+
+    .animate-pulse-slow {
+      animation: pulse-slow 8s ease-in-out infinite;
+    }
+
+    @keyframes spin-very-slow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .animate-spin-very-slow {
+      animation: spin-very-slow 120s linear infinite;
+    }
+
+    .animate-spin-slow {
+      animation: spin-very-slow 80s linear infinite;
+    }
+
+    .animate-spin-reverse {
+      animation: spin-very-slow 100s linear infinite reverse;
+    }
+
+    @keyframes scan {
+      0% {
+        top: 0;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+
+    .animate-scan {
+      animation: scan 4s ease-in-out infinite;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: 300;
+      }
+
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .animate-draw {
+      stroke-dasharray: 300;
+      animation: draw 2s ease-out forwards;
+    }
+  </style>
+  <script src="js/settings.js"></script>
+</body>
+
+</html>

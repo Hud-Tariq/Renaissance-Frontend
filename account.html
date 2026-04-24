@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Renaissance - Account</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "parchment": {
+                            50: '#fefefe',
+                            100: '#fdfafc',
+                            200: '#fefefe',
+                            300: '#eebbcf',
+                        },
+                        "purple": {
+                            500: '#8776aa',
+                            600: '#6a5c8a',
+                            700: '#5d4b77',
+                            800: '#2d2434',
+                            900: '#2d2434',
+                            300: '#c3aed5',
+                            100: '#e0bbe4',
+                        },
+                        "accent": '#fed5ce',
+                        "pink": {
+                            300: '#eebbcf',
+                            100: '#f4cccc',
+                        }
+                    },
+                    fontFamily: {
+                        "serif-display": ["Cormorant Garamond", "serif"],
+                        "serif-body": ["Source Serif 4", "serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(45, 36, 52, 0.05)',
+                        'glow': '0 0 15px rgba(135, 118, 170, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c3aed5;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8776aa;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-parchment-50 text-purple-800 font-sans antialiased h-screen flex overflow-hidden selection:bg-purple-200 selection:text-purple-900">
+    <nav id="sidebar"
+        class="w-16 md:w-20 bg-purple-900 flex flex-col transition-all duration-300 ease-in-out z-50 shadow-xl shrink-0 h-full relative">
+        <div class="flex items-center gap-3 py-6 px-0 justify-center transition-all duration-300 shrink-0 w-full"
+            id="sidebarHeader">
+            <button id="sidebarToggle"
+                class="size-10 flex items-center justify-center text-accent hover:text-white transition-colors cursor-pointer shrink-0">
+                <span class="material-symbols-outlined text-[32px]">menu</span>
+            </button>
+            <span
+                class="sidebar-label text-white font-serif-display text-xl font-bold whitespace-nowrap opacity-0 transition-opacity duration-300 w-0 overflow-hidden">Renaissance</span>
+        </div>
+
+        <div class="flex flex-col gap-2 w-full px-2 mt-2">
+            <a href="index.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-dashboard" title="Dashboard">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">dashboard</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Dashboard</span>
+            </a>
+
+            <a href="studio.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-studio" title="Studio">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">edit_square</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Studio</span>
+            </a>
+
+            <a href="capture.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-capture" title="Capture">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">photo_library</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Capture</span>
+            </a>
+            <a href="gallery.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-gallery" title="Gallery">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">collections_bookmark</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Gallery</span>
+            </a>
+            <a href="export.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-export" title="Export">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">ios_share</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Export</span>
+            </a>
+
+            <a href="intro.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-intro" title="Lessons">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">school</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Lessons</span>
+            </a>
+        </div>
+
+        <div class="mt-auto flex flex-col gap-4 w-full px-2 mb-6">
+            <a href="controls.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-controls" title="Settings">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">settings</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Settings</span>
+            </a>
+
+            <a href="account.html"
+                class="flex items-center gap-3 px-1 py-1 overflow-hidden whitespace-nowrap justify-center border-t border-purple-800 pt-4 bg-purple-800/50 rounded-lg mx-1"
+                id="user-profile" title="User Profile">
+                <div
+                    class="w-10 h-10 rounded-full bg-accent/20 border-2 border-purple-400 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    US
+                </div>
+                <div class="flex flex-col sidebar-label opacity-0 transition-opacity duration-300 w-0">
+                    <span class="font-sans text-sm font-medium text-white">User Profile</span>
+                    <span class="font-sans text-xs text-purple-300">Free Plan</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarHeader = document.getElementById('sidebarHeader');
+        const sidebarLabels = document.querySelectorAll('.sidebar-label');
+        const navItems = document.querySelectorAll('#sidebar a, #user-profile');
+        let isExpanded = false;
+
+        sidebarToggle.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            if (isExpanded) {
+                sidebar.classList.remove('w-16', 'md:w-20');
+                sidebar.classList.add('w-64');
+                sidebarHeader.classList.remove('justify-center');
+                sidebarHeader.classList.add('justify-start', 'px-6');
+
+                navItems.forEach(item => {
+                    item.classList.remove('justify-center');
+                    item.classList.add('justify-start');
+                });
+
+                sidebarLabels.forEach(label => {
+                    label.classList.remove('opacity-0', 'w-0');
+                    label.classList.add('opacity-100', 'w-auto', 'ml-3');
+                });
+            } else {
+                sidebar.classList.add('w-16', 'md:w-20');
+                sidebar.classList.remove('w-64');
+                sidebarHeader.classList.add('justify-center');
+                sidebarHeader.classList.remove('justify-start', 'px-6');
+
+                navItems.forEach(item => {
+                    item.classList.add('justify-center');
+                    item.classList.remove('justify-start');
+                });
+
+                sidebarLabels.forEach(label => {
+                    label.classList.add('opacity-0', 'w-0');
+                    label.classList.remove('opacity-100', 'w-auto', 'ml-3');
+                });
+            }
+        });
+    </script>
+
+    <div class="flex-1 flex flex-col min-w-0 bg-parchment-50 relative overflow-hidden">
+        <header
+            class="h-16 flex-none bg-white/80 backdrop-blur-md border-b border-purple-100 px-6 lg:px-10 flex items-center justify-between z-20 sticky top-0">
+            <h1 class="text-2xl font-bold text-purple-900 font-serif-display">Account</h1>
+        </header>
+
+        <main class="flex-1 overflow-y-auto bg-parchment-50/50 p-6 lg:p-10">
+            <div class="max-w-4xl mx-auto flex flex-col gap-10">
+
+                <!-- Profile Summary -->
+                <section
+                    class="flex flex-col md:flex-row gap-8 items-center md:items-start bg-white rounded-xl border border-purple-100 p-8 shadow-sm">
+                    <div class="relative">
+                        <div
+                            class="size-24 rounded-full bg-purple-100 border-4 border-white shadow-lg flex items-center justify-center text-purple-500">
+                            <span class="material-symbols-outlined text-4xl">person</span>
+                        </div>
+                        <button data-action="unimplemented" data-message="Profile editing coming soon!"
+                            class="absolute bottom-0 right-0 p-1.5 bg-purple-600 rounded-full text-white shadow-md hover:bg-purple-700 transition-colors">
+                            <span class="material-symbols-outlined text-sm">edit</span>
+                        </button>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h2 class="text-2xl font-serif-display font-bold text-purple-900">User Scholar</h2>
+                        <p class="text-purple-600 font-sans text-sm mb-4">Joined March 2024 • Free Tier</p>
+                        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                            <div
+                                class="px-4 py-2 bg-parchment-50 rounded-lg border border-purple-50 flex flex-col items-center md:items-start">
+                                <span class="text-lg font-bold text-purple-900 font-sans">12</span>
+                                <span
+                                    class="text-[10px] uppercase tracking-wider text-purple-500 font-bold">Sketches</span>
+                            </div>
+                            <div
+                                class="px-4 py-2 bg-parchment-50 rounded-lg border border-purple-50 flex flex-col items-center md:items-start">
+                                <span class="text-lg font-bold text-purple-900 font-sans">3</span>
+                                <span
+                                    class="text-[10px] uppercase tracking-wider text-purple-500 font-bold">Courses</span>
+                            </div>
+                            <div
+                                class="px-4 py-2 bg-parchment-50 rounded-lg border border-purple-50 flex flex-col items-center md:items-start">
+                                <span class="text-lg font-bold text-purple-900 font-sans">15h</span>
+                                <span class="text-[10px] uppercase tracking-wider text-purple-500 font-bold">Study
+                                    Time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 w-full md:w-auto">
+                        <button data-action="unimplemented" data-message="Profile editing coming soon!"
+                            class="px-6 py-2 rounded-lg border border-purple-200 text-purple-700 font-sans font-medium hover:bg-purple-50 transition-colors">Edit
+                            Profile</button>
+                        <button data-action="unimplemented" data-message="Sign out logic not connected."
+                            class="px-6 py-2 rounded-lg bg-pink-100 text-pink-700 font-sans font-medium hover:bg-pink-200 transition-colors">Sign
+                            Out</button>
+                    </div>
+                </section>
+
+                <!-- Subscription Plans -->
+                <section>
+                    <h3 class="text-xl font-serif-display font-semibold text-purple-900 mb-6">Subscription Plan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Free Plan -->
+                        <div
+                            class="bg-white rounded-xl border-2 border-purple-100 p-6 flex flex-col relative opacity-80 hover:opacity-100 transition-opacity">
+                            <span
+                                class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold w-fit mb-4">Current
+                                Plan</span>
+                            <h4 class="text-2xl font-serif-display font-bold text-purple-900 mb-2">Apprentice</h4>
+                            <div class="text-3xl font-bold text-purple-900 font-sans mb-6">$0 <span
+                                    class="text-sm font-medium text-purple-500">/ month</span></div>
+                            <ul class="flex-col flex gap-3 mb-8">
+                                <li class="flex items-center gap-2 text-sm text-purple-700">
+                                    <span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                                    Basic Construction Tools
+                                </li>
+                                <li class="flex items-center gap-2 text-sm text-purple-700">
+                                    <span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                                    Access to Lesson 1
+                                </li>
+                                <li class="flex items-center gap-2 text-sm text-purple-700">
+                                    <span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                                    3 Projects Limit
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Pro Plan -->
+                        <div
+                            class="bg-purple-900 rounded-xl border-2 border-purple-900 p-6 flex flex-col relative text-white shadow-xl transform md:-translate-y-2">
+                            <div
+                                class="absolute top-0 right-0 bg-accent text-purple-900 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-lg">
+                                POPULAR</div>
+                            <h4 class="text-2xl font-serif-display font-bold mb-2 pt-4 text-white">Master</h4>
+                            <div class="text-3xl font-bold font-sans mb-6 text-white">$12 <span
+                                    class="text-sm font-medium text-purple-300">/ month</span></div>
+                            <ul class="flex-col flex gap-3 mb-8">
+                                <li class="flex items-center gap-2 text-sm text-purple-100">
+                                    <span class="material-symbols-outlined text-accent text-lg">check_circle</span>
+                                    Unlimited Projects
+                                </li>
+                                <li class="flex items-center gap-2 text-sm text-purple-100">
+                                    <span class="material-symbols-outlined text-accent text-lg">check_circle</span>
+                                    Full Master Study Library
+                                </li>
+                                <li class="flex items-center gap-2 text-sm text-purple-100">
+                                    <span class="material-symbols-outlined text-accent text-lg">check_circle</span>
+                                    Advanced Export Options (4K, SVG)
+                                </li>
+                                <li class="flex items-center gap-2 text-sm text-purple-100">
+                                    <span class="material-symbols-outlined text-accent text-lg">check_circle</span>
+                                    Priority Support
+                                </li>
+                            </ul>
+                            <button data-action="unimplemented" data-message="Payment integration required."
+                                class="w-full py-3 bg-white text-purple-900 font-bold font-sans rounded-lg hover:bg-accent transition-colors">Upgrade
+                                to Master</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Billing History -->
+                <section>
+                    <h3 class="text-xl font-serif-display font-semibold text-purple-900 mb-6">Recent Activity</h3>
+                    <div class="bg-white rounded-xl border border-purple-100 overflow-hidden">
+                        <table class="w-full text-left">
+                            <thead
+                                class="bg-parchment-50 border-b border-purple-100 text-purple-500 font-sans text-xs uppercase tracking-wider">
+                                <tr>
+                                    <th class="px-6 py-4 font-semibold">Date</th>
+                                    <th class="px-6 py-4 font-semibold">Description</th>
+                                    <th class="px-6 py-4 font-semibold">Amount</th>
+                                    <th class="px-6 py-4 font-semibold">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-purple-50 text-sm text-purple-800">
+                                <tr>
+                                    <td class="px-6 py-4">Mar 12, 2024</td>
+                                    <td class="px-6 py-4 font-medium">Subscription Started</td>
+                                    <td class="px-6 py-4">$0.00</td>
+                                    <td class="px-6 py-4"><span
+                                            class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-bold">Active</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="px-6 py-4 bg-parchment-50/50 border-t border-purple-50 text-center">
+                            <button data-action="unimplemented" data-message="History logging is a Pro feature."
+                                class="text-purple-600 font-sans text-sm font-medium hover:text-purple-900">View All
+                                History</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="js/settings.js"></script>
+</body>
+
+</html>

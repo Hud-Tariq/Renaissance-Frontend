@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Renaissance - Image Capture</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "parchment": {
+                            50: '#fefefe',
+                            100: '#fdfafc',
+                            200: '#fefefe',
+                            300: '#eebbcf',
+                        },
+                        "purple": {
+                            500: '#8776aa',
+                            600: '#6a5c8a',
+                            700: '#5d4b77',
+                            800: '#2d2434',
+                            900: '#2d2434',
+                        },
+                        "accent": "#eebbcf",
+                        "accent-secondary": "#c3aed5",
+                    },
+                    fontFamily: {
+                        "serif-display": ["Cormorant Garamond", "serif"],
+                        "serif-body": ["Source Serif 4", "serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(44, 44, 44, 0.05)",
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-parchment-50 text-purple-800 font-sans antialiased h-screen flex overflow-hidden selection:bg-accent-secondary selection:text-purple-900">
+    <nav id="sidebar"
+        class="w-16 md:w-20 bg-purple-900 flex flex-col transition-all duration-300 ease-in-out z-50 shadow-xl shrink-0 h-full relative">
+        <div class="flex items-center gap-3 py-6 px-0 justify-center transition-all duration-300 shrink-0 w-full"
+            id="sidebarHeader">
+            <button id="sidebarToggle"
+                class="size-10 flex items-center justify-center text-accent hover:text-white transition-colors cursor-pointer shrink-0">
+                <span class="material-symbols-outlined text-[32px]">menu</span>
+            </button>
+            <span
+                class="sidebar-label text-white font-serif-display text-xl font-bold whitespace-nowrap opacity-0 transition-opacity duration-300 w-0 overflow-hidden">Renaissance</span>
+        </div>
+
+        <div class="flex flex-col gap-2 w-full px-2 mt-2">
+            <a href="index.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-dashboard" title="Dashboard">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">dashboard</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Dashboard</span>
+            </a>
+
+            <a href="studio.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-studio" title="Studio">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">edit_square</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Studio</span>
+            </a>
+
+            <a href="capture.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl bg-purple-600 text-white shadow-lg shadow-purple-900/50 transition-all overflow-hidden whitespace-nowrap justify-center relative"
+                id="nav-capture" title="Capture">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">photo_library</span>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-accent rounded-r-full"></div>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Capture</span>
+            </a>
+            <a href="gallery.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-gallery" title="Gallery">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">collections_bookmark</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Gallery</span>
+            </a>
+            <a href="export.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-export" title="Export">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">ios_share</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Export</span>
+            </a>
+
+            <a href="intro.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-intro" title="Lessons">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">school</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Lessons</span>
+            </a>
+        </div>
+
+        <div class="mt-auto flex flex-col gap-4 w-full px-2 mb-6">
+            <a href="controls.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-controls" title="Settings">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">settings</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Settings</span>
+            </a>
+
+            <a href="account.html"
+                class="flex items-center gap-3 px-1 py-1 overflow-hidden whitespace-nowrap justify-center border-t border-purple-800 pt-4"
+                id="user-profile" title="User Profile">
+                <div
+                    class="w-10 h-10 rounded-full bg-accent/20 border-2 border-purple-400 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    US
+                </div>
+                <div class="flex flex-col sidebar-label opacity-0 transition-opacity duration-300 w-0">
+                    <span class="font-sans text-sm font-medium text-white">User Profile</span>
+                    <span class="font-sans text-xs text-purple-300">Free Plan</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarHeader = document.getElementById('sidebarHeader');
+        const sidebarLabels = document.querySelectorAll('.sidebar-label');
+        const navItems = document.querySelectorAll('#sidebar a, #user-profile');
+        let isExpanded = false;
+
+        sidebarToggle.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            if (isExpanded) {
+                sidebar.classList.remove('w-16', 'md:w-20');
+                sidebar.classList.add('w-64');
+                sidebarHeader.classList.remove('justify-center');
+                sidebarHeader.classList.add('justify-start', 'px-6');
+
+                navItems.forEach(item => {
+                    item.classList.remove('justify-center');
+                    item.classList.add('justify-start');
+                });
+
+                sidebarLabels.forEach(label => {
+                    label.classList.remove('opacity-0', 'w-0');
+                    label.classList.add('opacity-100', 'w-auto', 'ml-3');
+                });
+            } else {
+                sidebar.classList.add('w-16', 'md:w-20');
+                sidebar.classList.remove('w-64');
+                sidebarHeader.classList.add('justify-center');
+                sidebarHeader.classList.remove('justify-start', 'px-6');
+
+                navItems.forEach(item => {
+                    item.classList.add('justify-center');
+                    item.classList.remove('justify-start');
+                });
+
+                sidebarLabels.forEach(label => {
+                    label.classList.add('opacity-0', 'w-0');
+                    label.classList.remove('opacity-100', 'w-auto', 'ml-3');
+                });
+            }
+        });
+    </script>
+    <div class="flex-1 flex flex-col min-w-0 bg-parchment-50 relative overflow-hidden">
+        <header
+            class="h-16 flex items-center justify-between px-6 border-b border-purple-100 bg-white/50 backdrop-blur-sm z-30 sticky top-0">
+            <div class="flex items-center gap-4">
+                <span class="font-sans text-xs font-semibold uppercase tracking-wider text-purple-500">Import</span>
+            </div>
+            <div
+                class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-white/50 rounded-full border border-purple-100">
+                <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                <span class="font-sans text-xs font-medium text-purple-500">Camera Ready</span>
+            </div>
+        </header>
+        <main class="flex-1 overflow-y-auto w-full h-full flex flex-col">
+            <div class="flex-1 flex flex-col lg:flex-row items-center justify-center p-6 lg:p-12 gap-10">
+                <div class="flex flex-col gap-6 max-w-lg w-full">
+                    <div>
+                        <span
+                            class="text-purple-600 font-sans font-bold tracking-widest text-xs uppercase mb-2 block">Step
+                            01</span>
+                        <h1 class="text-4xl lg:text-5xl font-serif-display text-purple-900 mb-4">Select Reference</h1>
+                        <p class="text-purple-800/70 font-serif-body text-lg leading-relaxed">
+                            Upload a high-quality portrait or specific artwork you wish to analyze. Our system will
+                            deconstruct it into foundational steps.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <button onclick="window.location.href='processing.html'"
+                            class="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-purple-900 text-white shadow-soft hover:shadow-lg hover:bg-purple-800 transition-all group">
+                            <span
+                                class="material-symbols-outlined group-hover:-translate-y-0.5 transition-transform">cloud_upload</span>
+                            <span class="font-sans font-medium">Upload Image</span>
+                        </button>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button id="btn-camera"
+                                class="flex items-center justify-center gap-2 py-3 rounded-xl border border-purple-200 text-purple-800 hover:bg-purple-50 transition-colors">
+                                <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+                                <span class="font-sans text-sm font-medium">Camera</span>
+                            </button>
+                            <button id="btn-url"
+                                class="flex items-center justify-center gap-2 py-3 rounded-xl border border-purple-200 text-purple-800 hover:bg-purple-50 transition-colors">
+                                <span class="material-symbols-outlined text-[20px]">link</span>
+                                <span class="font-sans text-sm font-medium">URL</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-purple-100 shadow-sm flex items-start gap-4">
+                        <span
+                            class="material-symbols-outlined text-purple-600 bg-purple-50 p-2 rounded-lg">lightbulb</span>
+                        <div>
+                            <h4 class="font-serif-display font-bold text-purple-900 text-lg">Lighting Matters</h4>
+                            <p class="text-sm text-purple-800/60 font-sans leading-relaxed mt-1">
+                                For best results, choose images with clear directional lighting. This helps the AI
+                                identify planes and structural forms more accurately.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="drop-zone"
+                    class="relative w-full max-w-xl aspect-[3/4] lg:aspect-[4/5] bg-parchment-200 rounded-2xl border-[8px] border-white shadow-2xl flex items-center justify-center overflow-hidden group transition-all duration-300">
+                    <input type="file" id="file-upload" class="hidden" accept="image/*">
+                    <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+                    <div class="flex flex-col items-center justify-center text-purple-300 gap-4 pointer-events-none">
+                        <span
+                            class="material-symbols-outlined text-7xl group-hover:scale-110 transition-transform duration-500">add_photo_alternate</span>
+                        <span class="font-sans text-sm font-medium uppercase tracking-widest text-purple-400">Drag &
+                            Drop or Click</span>
+                    </div>
+                    <!-- Decorative elements -->
+                    <div class="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-purple-300 rounded-tl-lg">
+                    </div>
+                    <div class="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-purple-300 rounded-tr-lg">
+                    </div>
+                    <div
+                        class="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-purple-300 rounded-bl-lg">
+                    </div>
+                    <div
+                        class="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-purple-300 rounded-br-lg">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/components.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Renaissance - Processing</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "parchment": {
+                            50: '#fefefe',
+                            100: '#fdfafc',
+                            200: '#fefefe',
+                            300: '#eebbcf',
+                        },
+                        "purple": {
+                            500: '#8776aa',
+                            600: '#6a5c8a',
+                            700: '#5d4b77',
+                            800: '#2d2434',
+                            900: '#2d2434',
+                        },
+                        "accent": "#eebbcf",
+                        "accent-secondary": "#c3aed5",
+                    },
+                    fontFamily: {
+                        "serif-display": ["Cormorant Garamond", "serif"],
+                        "serif-body": ["Source Serif 4", "serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(44, 44, 44, 0.05)",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .scanning-line {
+            animation: scan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-parchment-50 text-purple-800 font-sans antialiased h-screen flex overflow-hidden selection:bg-accent-secondary selection:text-purple-900">
+    <nav id="sidebar"
+        class="w-16 md:w-20 bg-purple-900 flex flex-col transition-all duration-300 ease-in-out z-50 shadow-xl shrink-0 h-full relative">
+        <div class="flex items-center gap-3 py-6 px-0 justify-center transition-all duration-300 shrink-0 w-full"
+            id="sidebarHeader">
+            <button id="sidebarToggle"
+                class="size-10 flex items-center justify-center text-accent hover:text-white transition-colors cursor-pointer shrink-0">
+                <span class="material-symbols-outlined text-[32px]">menu</span>
+            </button>
+            <span
+                class="sidebar-label text-white font-serif-display text-xl font-bold whitespace-nowrap opacity-0 transition-opacity duration-300 w-0 overflow-hidden">Renaissance</span>
+        </div>
+
+        <div class="flex flex-col gap-2 w-full px-2 mt-2">
+            <a href="index.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-dashboard" title="Dashboard">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">dashboard</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Dashboard</span>
+            </a>
+
+            <a href="studio.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-studio" title="Studio">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">edit_square</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Studio</span>
+            </a>
+
+            <a href="capture.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-capture" title="Capture">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">photo_library</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Capture</span>
+            </a>
+            <a href="gallery.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-gallery" title="Gallery">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">collections_bookmark</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Gallery</span>
+            </a>
+            <a href="export.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-export" title="Export">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">ios_share</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Export</span>
+            </a>
+
+            <a href="intro.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-intro" title="Lessons">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">school</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Lessons</span>
+            </a>
+        </div>
+
+        <div class="mt-auto flex flex-col gap-4 w-full px-2 mb-6">
+            <a href="controls.html"
+                class="flex items-center gap-4 px-3 py-3 rounded-xl text-purple-300 hover:bg-white/10 hover:text-white transition-all overflow-hidden whitespace-nowrap justify-center"
+                id="nav-controls" title="Settings">
+                <span class="material-symbols-outlined shrink-0 text-[24px]">settings</span>
+                <span
+                    class="sidebar-label font-sans text-sm font-medium opacity-0 transition-opacity duration-300 w-0">Settings</span>
+            </a>
+
+            <a href="account.html"
+                class="flex items-center gap-3 px-1 py-1 overflow-hidden whitespace-nowrap justify-center border-t border-purple-800 pt-4"
+                id="user-profile" title="User Profile">
+                <div
+                    class="w-10 h-10 rounded-full bg-accent/20 border-2 border-purple-400 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    US
+                </div>
+                <div class="flex flex-col sidebar-label opacity-0 transition-opacity duration-300 w-0">
+                    <span class="font-sans text-sm font-medium text-white">User Profile</span>
+                    <span class="font-sans text-xs text-purple-300">Free Plan</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarHeader = document.getElementById('sidebarHeader');
+        const sidebarLabels = document.querySelectorAll('.sidebar-label');
+        const navItems = document.querySelectorAll('#sidebar a, #user-profile');
+        let isExpanded = false;
+
+        sidebarToggle.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            if (isExpanded) {
+                sidebar.classList.remove('w-16', 'md:w-20');
+                sidebar.classList.add('w-64');
+                sidebarHeader.classList.remove('justify-center');
+                sidebarHeader.classList.add('justify-start', 'px-6');
+
+                navItems.forEach(item => {
+                    item.classList.remove('justify-center');
+                    item.classList.add('justify-start');
+                });
+
+                sidebarLabels.forEach(label => {
+                    label.classList.remove('opacity-0', 'w-0');
+                    label.classList.add('opacity-100', 'w-auto', 'ml-3');
+                });
+            } else {
+                sidebar.classList.add('w-16', 'md:w-20');
+                sidebar.classList.remove('w-64');
+                sidebarHeader.classList.add('justify-center');
+                sidebarHeader.classList.remove('justify-start', 'px-6');
+
+                navItems.forEach(item => {
+                    item.classList.add('justify-center');
+                    item.classList.remove('justify-start');
+                });
+
+                sidebarLabels.forEach(label => {
+                    label.classList.add('opacity-0', 'w-0');
+                    label.classList.remove('opacity-100', 'w-auto', 'ml-3');
+                });
+            }
+        });
+    </script>
+    <div class="flex-1 flex flex-col min-w-0 bg-parchment-50 relative overflow-hidden">
+        <header
+            class="h-16 flex items-center justify-between px-6 border-b border-purple-100 bg-white/50 backdrop-blur-sm z-30 sticky top-0">
+            <div class="flex items-center gap-4">
+                <nav class="flex items-center text-sm text-purple-400">
+                    <span class="hover:text-purple-800 cursor-pointer transition-colors">Projects</span>
+                    <span class="material-symbols-outlined mx-2 text-[16px]">chevron_right</span>
+                    <span class="font-medium text-purple-900">Portrait Study</span>
+                </nav>
+            </div>
+            <div class="flex items-center gap-3">
+                <button
+                    class="flex items-center justify-center gap-2 rounded-lg border border-purple-200 bg-transparent px-4 py-2 text-sm font-medium text-purple-800 hover:bg-purple-50 transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">help</span>
+                    Help
+                </button>
+            </div>
+        </header>
+        <main class="flex-1 overflow-y-auto w-full p-6 lg:p-10">
+            <div class="mx-auto max-w-6xl">
+                <div
+                    class="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between border-b border-purple-100 pb-6">
+                    <div>
+                        <h1 class="font-serif-display text-4xl font-normal leading-tight text-purple-900 md:text-5xl">
+                            Constructing Model</h1>
+                        <p class="mt-2 font-serif-body text-lg text-purple-600 max-w-2xl">
+                            Our AI artist is analyzing your image and building the structure step-by-step.
+                        </p>
+                    </div>
+                    <div
+                        class="flex items-center gap-2 rounded-full bg-purple-50 px-4 py-1.5 text-sm font-medium text-purple-700 border border-purple-100">
+                        <span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span>
+                        <span>Estimated time: ~12s</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+                    <div class="lg:col-span-7 flex flex-col">
+                        <div
+                            class="group relative aspect-square w-full overflow-hidden rounded-2xl border-2 border-white shadow-2xl bg-gray-900">
+                            <div class="absolute inset-0 opacity-10 pointer-events-none"
+                                style="background-image: linear-gradient(#5C5466 1px, transparent 1px), linear-gradient(90deg, #5C5466 1px, transparent 1px); background-size: 40px 40px;">
+                            </div>
+                            <!-- Image Analysis Overlay -->
+                            <div class="absolute inset-0 flex items-center justify-center p-8">
+                                <div class="relative h-full w-full flex items-center justify-center">
+                                    <div
+                                        class="relative w-3/4 h-3/4 bg-purple-600/10 rounded-full border border-purple-500/30 animate-pulse flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-8xl text-purple-300/40">face</span>
+                                    </div>
+                                    <!-- Scanning effects -->
+                                    <div
+                                        class="scanning-line absolute left-0 right-0 h-[1px] bg-[#eebbcf] shadow-[0_0_15px_2px_rgba(238,187,207,0.5)] z-10">
+                                    </div>
+                                    <div class="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-accent">
+                                    </div>
+                                    <div class="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-accent">
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-accent">
+                                    </div>
+                                    <div class="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-accent">
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-4 left-6 right-6 flex justify-between font-mono text-[10px] tracking-wider text-white/70">
+                                <span>COORD: X:452 Y:112 Z:092</span>
+                                <span>PROCESS_V4.2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 flex flex-col justify-center">
+                        <div class="rounded-2xl border border-purple-100 bg-white/70 backdrop-blur-sm p-8 shadow-soft">
+                            <div class="mb-8">
+                                <h3 class="font-sans text-xs font-bold uppercase tracking-widest text-purple-400">
+                                    Current Status</h3>
+                                <h2 class="mt-1 font-serif-display text-2xl font-bold text-purple-900">Mapping
+                                    skull structure...</h2>
+                            </div>
+                            <div class="relative flex flex-col gap-8 pl-2">
+                                <div class="absolute left-[19px] top-3 bottom-3 w-[1px] bg-purple-100">
+                                </div>
+                                <div class="relative z-10 flex gap-4 opacity-50">
+                                    <div
+                                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700 ring-1 ring-inset ring-green-600/20">
+                                        <span class="material-symbols-outlined text-xl">check</span>
+                                    </div>
+                                    <div class="pt-1">
+                                        <p class="font-serif-display text-lg font-bold leading-none text-purple-900">
+                                            Proportions Analyzed</p>
+                                        <p class="mt-1 font-serif-body text-sm text-purple-600">Found 68
+                                            facial landmarks</p>
+                                    </div>
+                                </div>
+                                <div class="relative z-10 flex gap-4">
+                                    <div
+                                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-purple-600 text-white shadow-[0_0_15px_rgba(135,118,170,0.4)]">
+                                        <span class="material-symbols-outlined animate-spin text-xl">cached</span>
+                                    </div>
+                                    <div class="pt-1">
+                                        <p class="font-serif-display text-lg font-bold leading-none text-purple-900">
+                                            Mapping Structure</p>
+                                        <p class="mt-1 font-serif-body text-sm text-purple-600">Generating
+                                            primary masses...</p>
+                                    </div>
+                                </div>
+                                <div class="relative z-10 flex gap-4 opacity-40">
+                                    <div
+                                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white border border-purple-200 text-purple-400 font-sans font-medium text-sm">
+                                        3
+                                    </div>
+                                    <div class="pt-1">
+                                        <p class="font-serif-display text-lg font-medium leading-none text-purple-900">
+                                            Jaw Plane Construction</p>
+                                        <p class="mt-1 font-serif-body text-sm text-purple-500">Waiting for
+                                            structure map</p>
+                                    </div>
+                                </div>
+                                <div class="relative z-10 flex gap-4 opacity-40">
+                                    <div
+                                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white border border-purple-200 text-purple-400 font-sans font-medium text-sm">
+                                        4
+                                    </div>
+                                    <div class="pt-1">
+                                        <p class="font-serif-display text-lg font-medium leading-none text-purple-900">
+                                            Aligning Features</p>
+                                        <p class="mt-1 font-serif-body text-sm text-purple-500">Final
+                                            refinement pass</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-10 border-t border-purple-100 pt-6">
+                                <button onclick="window.location.href='review.html'"
+                                    class="w-full rounded-lg bg-purple-600 border border-transparent py-3 text-sm font-semibold text-white transition-colors hover:bg-purple-800 shadow-md">
+                                    View Result
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/settings.js"></script>
+</body>
+
+</html>
